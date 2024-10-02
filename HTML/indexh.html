@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/png">
+    <title>PracticeHtmlCssJavascript</title>
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        nav {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #mode {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px; /* Improved font size */
+        }
+
+        #mode:hover {
+            background-color: #555;
+        }
+
+        section {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between buttons */
+        }
+
+        button {
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.3s; /* Added scaling effect */
+            font-size: 16px; /* Improved font size */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        button:hover {
+            opacity: 0.8;
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        #btn-black { background-color: black; }
+        #btn-blue { background-color: blue; }
+        #btn-red { background-color: red; }
+        #btn-yellow { background-color: yellow; color: black; }
+        #btn-aqua { background-color: aqua; }
+
+        #time {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, opacity 0.3s;
+            font-size: 16px; /* Improved font size */
+        }
+
+        #time:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="mode">Toggle Dark Mode</button>
+        <button id="time"></button>
+    </nav>
+
+    <section>
+        <button id="btn-black">Black</button>
+        <button id="btn-blue">Blue</button>
+        <button id="btn-red">Red</button>
+        <button id="btn-yellow">Yellow</button>
+        <button id="btn-aqua">Aqua</button>
+    </section>
+
+    <script>
+        // mode code
+        let flagmode = false
+        document.getElementById("mode").addEventListener("click", function(){
+            if(flagmode == false){
+                document.body.style.backgroundColor = "black";
+                flagmode = true;
+                document.getElementById("mode").innerText = "clickForLight"
+            } else {
+                document.body.style.backgroundColor = "white";
+                flagmode = false;
+                document.getElementById("mode").innerText = "clickFordark"
+            }
+        });
+
+        const colors = ["black", "blue", "yellow", "red", "aqua"];
+        const buttons = ["btn-black", "btn-blue", "btn-yellow", "btn-red", "btn-aqua"];
+
+        for (let i = 0; i < buttons.length; i++) {
+            document.getElementById(buttons[i]).addEventListener("click", function() {
+                document.body.style.backgroundColor = colors[i];
+            });
+        }
+
+        //time code
+        setInterval(() => {
+            document.getElementById("time").innerText = new Date().toLocaleTimeString();
+        }, 1000);
+
+
+    </script>
+</body>
+</html>
